@@ -1,0 +1,22 @@
+.cf-primary {
+  float: right;
+  margin: 8px 8px 9px 0;
+}
+
+.cf-captcha-primary-button {
+  background: #4a90e2;
+  border: 0;
+  border-radius: 2px;
+  color: #fff;
+  cursor: pointer;
+  font-family: Roboto,helvetica,arial,sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 42px;
+  line-height: 42px;
+  min-width: 100px;
+  padding: 0 10px 0 10px;
+  text-align: center;
+  text-transform: uppercase;
+  /* transition: all 0.5s ease; */
+}
