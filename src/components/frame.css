@@ -2,9 +2,19 @@
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(204, 204, 204);
   box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px;
-  width: 400px;
+  max-width: 400px;
   height: 582px;
-  /* transition: visibility 0s linear 0.3s, opacity 0.3s linear; */
-  /* opacity: 0; */
   z-index: 2000000000;
+  position: relative;
+}
+
+@media (min-width: 200px) 
+and (max-width: 812px) { 
+  .cf-frame {
+    box-shadow: none;
+    width: 100%;
+    height: inherit;
+    border: none;
+    border-bottom: 1px solid rgb(204, 204, 204);
+  }
 }

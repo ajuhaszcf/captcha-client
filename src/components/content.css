@@ -1,7 +1,6 @@
 .cf-content {
   height: 409px;
   transform-style: preserve-3d;
-  /* transition: transform ease 1500ms; */
 }
 
 .cf-content.disable-ani {

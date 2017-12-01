@@ -9,7 +9,7 @@ class ContentFrame extends Component {
     super(props);
     this.state = {
       transform: 0,
-
+      width: 400,
     };
   }
   componentWillReceiveProps(nextProps) {
@@ -19,12 +19,23 @@ class ContentFrame extends Component {
       });
     }
   }
+
+  componentDidMount() {
+    const me = document.querySelector('#content-box');
+    this.setState({
+      width: me.clientWidth,
+    })
+  }
+
   render() {
     const imageSet = this.props.challenge.images[this.props.set];
     const gridSize = Math.sqrt(imageSet.length);
     const buttons = imageSet.map((image, i) => 
-      <ChallengeButton key={image.id} gridSize={gridSize} image={image} toggle={this.props.toggle} />
+      <ChallengeButton totalWidth={this.state.width} key={image.id} gridSize={gridSize} image={image} toggle={this.props.toggle} />
     );
+    const style = {
+      height: this.state.width + gridSize * 2,
+    };
     // {{transform: `rotateY(${this.state.transform}deg)`}}
     return (
       <ReactCSSTransitionReplace
@@ -32,7 +43,7 @@ class ContentFrame extends Component {
         transitionEnterTimeout={1100}
         transitionLeaveTimeout={1100}
       >
-        <div key={this.props.set} className={`cf-content ${this.props.set === 0 ? 'disable-ani' : ''} `} >
+        <div id="content-box" style={style} ref={input => {this.myContent = input}} key={this.props.set} className={`cf-content ${this.props.set === 0 ? 'disable-ani' : ''} `} >
           {buttons}
         </div>
       </ReactCSSTransitionReplace>

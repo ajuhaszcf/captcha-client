@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 import './rootimage.css';
 
 class RootImage extends Component {
   render() {
     if (!this.props.challenge.rootImage) return null;
+    if (this.props.challenge.scale === 1) return null;
     let styleSheet = document.styleSheets[0];
 
     let animationName = `animation-zoom-${Math.floor(Math.random()*10000)}`;
@@ -21,8 +21,8 @@ class RootImage extends Component {
     let parentAnimationName = `parent-animation-zoom-${Math.floor(Math.random()*10000)}`
     let parentKeyframes =
     `@keyframes goaway {
-      0% { visibility: visible; } 
-      100% { visibility: hidden; }
+      0% { visibility: visible; display: initial; } 
+      100% { visibility: hidden; display: none; }
     }`;
 
     styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
@@ -32,7 +32,7 @@ class RootImage extends Component {
     // };
     return (
       <div className="root-image" style={{ animationName: parentAnimationName }} >
-        <img key={this.props.challenge.rootImage} src={this.props.challenge.rootImage} style={{ animationName }} /> 
+        <img alt="big root" key={this.props.challenge.rootImage} src={this.props.challenge.rootImage} style={{ animationName }} /> 
       </div>
     );
   }

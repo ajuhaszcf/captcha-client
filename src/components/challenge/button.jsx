@@ -4,8 +4,8 @@ import './button.css';
 class ChallengeButton extends Component {
   render() {
     const overlayStyle = {
-      width: 400 / this.props.gridSize,
-      height: 400 / this.props.gridSize,
+      width: this.props.totalWidth / this.props.gridSize,
+      height: this.props.totalWidth / this.props.gridSize,
     };
     const style = {
       width: '100%',

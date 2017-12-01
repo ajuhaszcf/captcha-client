@@ -14,5 +14,12 @@
 }
 
 .cf-header strong {
-  font-size: 28px;
+  font-size: 24px;
+}
+
+@media  (min-width: 200px) 
+and (max-width: 812px) { 
+  .cf-header {
+    padding: 12px;
+  }
 }
