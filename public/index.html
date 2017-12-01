@@ -19,22 +19,77 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <style>
+      button.cf-captcha-secondary-button {
+        color: #FFF;
+        background-color: #5AC597;
+        border-color: #5AC597;
+        border: 0;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: Roboto,helvetica,arial,sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        height: 42px;
+        line-height: 42px;
+        min-width: 100px;
+        padding: 0 10px 0 10px;
+        text-align: center;
+        text-transform: uppercase;
+        /* transition: all 0.5s ease; */
+      }
+
+      button.cf-captcha-boring-button {
+        color: #FFF;
+        background-color: #7D8C9C;
+        border-color: #7D8C9C;
+        border: 0;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: Roboto,helvetica,arial,sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        height: 42px;
+        line-height: 42px;
+        min-width: 100px;
+        padding: 0 10px 0 10px;
+        text-align: center;
+        text-transform: uppercase;
+        /* transition: all 0.5s ease; */
+      }
+      
+      .demo {
+        margin: 10px;
+      }
+    </style>
+    <title>Captcha</title>
+    <script type="text/javascript">
+      function nextDemo() {
+        const qs = {};
+        document.location.search.slice(1).split('&').forEach(e => {
+          const arr = e.split('=');
+          qs[arr[0]] = arr[1];
+        });
+        if (qs.demo) {
+          document.location = document.location.origin + '/?demo=' + (parseInt(qs.demo, 10) + 1);
+        } else {
+          document.location = document.location.origin + '/?demo=0';
+        }
+      }
+
+      function restartDemo() {
+        document.location = document.location.origin + '/?demo=0';
+      }
+    </script>
   </head>
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div class="demo" style="max-width: 405px">
+      <button class="cf-captcha-secondary-button" style="float:left" onclick="nextDemo()">Next Demo</button>
+      <button class="cf-captcha-boring-button" style="float:right" onclick="restartDemo()">Restart Demo</button>
+    </div>
   </body>
 </html>

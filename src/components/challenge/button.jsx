@@ -18,8 +18,8 @@ class ChallengeButton extends Component {
     }
     return (
       <div className={`cf-challenge-button-overlay ${this.props.image.selected && 'check-overlay'}`} style={overlayStyle} >
-        <button className="cf-challenge-button" style={style} onClick={() => this.props.toggle(this.props.image.id)}>
-        </button>
+        <div className="cf-challenge-button" style={style} onClick={() => this.props.toggle(this.props.image.id)}>
+        </div>
       </div>
     );
   }

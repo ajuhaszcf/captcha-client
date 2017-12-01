@@ -42,8 +42,37 @@ class App extends Component {
       const arr = e.split('=');
       qs[arr[0]] = arr[1];
     });
-    console.log(qs);
-    getData(qs).then(challenge => this.setState({
+    let thePromise;
+    switch (qs.demo) {
+      case '0':
+        thePromise = getData({ taskid: 0 });
+        break;
+
+      case '1':
+        thePromise = getData({ taskid: 1, tasktoken: 'cell2' });
+        break;
+
+      case '2':
+        thePromise = getData({ taskid: 1, tasktoken: 'cell2', root: 6 });
+        break;
+
+      case '3':
+        thePromise = getData({ taskid: 1, tasktoken: 'car1' });
+        break;
+
+      case '4':
+        thePromise = getData({ taskid: 1, tasktoken: 'car1', root: 7 });
+        break;
+
+      case '5':
+        thePromise = getData({ taskid: 1, tasktoken: 'car1', root: '7.11' });
+        break;
+
+      default:
+        thePromise = getData(qs);
+        break;
+    }
+    thePromise.then(challenge => this.setState({
       challenge: challenge,
       originalChallenge: challenge,
     }))
