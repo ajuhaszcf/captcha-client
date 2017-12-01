@@ -1,3 +1,26 @@
 .cf-content {
-  height: 409px
+  height: 409px;
+  transform-style: preserve-3d;
+  /* transition: transform ease 1500ms; */
+}
+
+.cf-content.disable-ani {
+  transition: none;
+  transform: none;
+}
+
+.flip-leave {
+  transform: rotateY(0deg);
+}
+.flip-leave.flip-leave-active {
+  transform: rotateY(90deg);
+  transition: transform .4s ease-in;
+}
+
+.flip-enter {
+  transform: rotateY(90deg);
+}
+.flip-enter.flip-enter-active {
+  transform: rotateY(0deg);
+  transition: transform .4s ease-in .4s;
 }
