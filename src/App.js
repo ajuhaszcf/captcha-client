@@ -69,15 +69,34 @@ class App extends Component {
       case '5':
         thePromise = getData({ taskid: 2, tasktoken: 'car1', root: '7.11' });
         break;
+      
+      case '6':
+        thePromise = getData({ 
+          taskid: 2, 
+          tasktoken: 'car1', 
+          root: `${_.sample([5, 6, 7, 8, 10, 11, 12])}`, 
+        });
+        break;
+
+      case '7':
+        thePromise = getData({ 
+          taskid: 2, 
+          tasktoken: 'car1', 
+          root: `${_.sample([7, 8, 12])}.${Math.ceil(Math.random() * 12)}`, 
+        });
+        break;
 
       default:
-        if (parseInt(this.state.qs.demo, 10)) {
+        if (!isNaN(parseInt(this.state.qs.demo, 10))) {
           thePromise = getData({ 
             taskid: 2, 
             tasktoken: 'car1', 
             root: _.sample([
               `${_.sample([5, 6, 7, 8, 10, 11, 12])}`,
-              `${_.sample([5, 6, 7, 8, 10, 11, 12])}.${Math.ceil(Math.random() * 12)}`
+              `${_.sample([5, 6, 7, 8, 10, 11, 12])}.${Math.ceil(Math.random() * 12)}`,
+              `${_.sample([5, 6, 7, 8, 10, 11, 12])}.${Math.ceil(Math.random() * 12)}`,
+              `${_.sample([5, 6, 7, 8, 10, 11, 12])}.${Math.ceil(Math.random() * 12)}`,
+              `${_.sample([5, 6, 7, 8, 10, 11, 12])}.${Math.ceil(Math.random() * 12)}`,
             ]), 
           });
         } else {
