@@ -5,8 +5,9 @@ import ChallengeButton from './challenge/button';
 
 class ContentFrame extends Component {
   render() {
-    const gridSize = Math.sqrt(this.props.challenge.images.length);
-    const buttons = this.props.challenge.images.map((image, i) => 
+    const imageSet = this.props.challenge.images[this.props.set];
+    const gridSize = Math.sqrt(imageSet.length);
+    const buttons = imageSet.map((image, i) => 
       <ChallengeButton key={i} gridSize={gridSize} image={image} toggle={this.props.toggle} />
     );
     return (

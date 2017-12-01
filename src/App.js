@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       challenge: null,
       originalChallenge: null,
+      set: 0,
     };
     this.toggleSelection = this.toggleSelection.bind(this);
     this.verify = this.verify.bind(this);
@@ -24,7 +25,7 @@ class App extends Component {
 
   toggleSelection(id) {
     const newChallenge = _.cloneDeep(this.state.challenge);
-    newChallenge.images = newChallenge.images.map(element => {
+    newChallenge.images[this.state.set] = newChallenge.images[this.state.set].map(element => {
       if (element.id === id) {
         element.selected = !element.selected;
       }
@@ -99,13 +100,14 @@ class App extends Component {
   clear() {
     this.setState({
       challenge: this.state.originalChallenge,
+      set: 0,
     })
   }
 
   render() {
     return (
       <div className="cf-captcha">
-        {this.state.challenge ? <Frame challenge={this.state.challenge} toggle={this.toggleSelection} refresh={this.refresh} verify={this.verify} /> : null}
+        {this.state.challenge ? <Frame challenge={this.state.challenge} toggle={this.toggleSelection} refresh={this.refresh} verify={this.verify} set={this.state.set} /> : null}
       </div>
     );
   }
