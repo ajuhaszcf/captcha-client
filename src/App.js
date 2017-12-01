@@ -8,10 +8,16 @@ import getData from './actions/getData';
 class App extends Component {
   constructor(props) {
     super(props);
+    const qs = {};
+    document.location.search.slice(1).split('&').forEach(e => {
+      const arr = e.split('=');
+      qs[arr[0]] = arr[1];
+    });
     this.state = {
       challenge: null,
       originalChallenge: null,
       set: 0,
+      qs,
     };
     this.toggleSelection = this.toggleSelection.bind(this);
     this.verify = this.verify.bind(this);
@@ -38,13 +44,8 @@ class App extends Component {
   }
 
   refresh() {
-    const qs = {};
-    document.location.search.slice(1).split('&').forEach(e => {
-      const arr = e.split('=');
-      qs[arr[0]] = arr[1];
-    });
     let thePromise;
-    switch (qs.demo) {
+    switch (this.state.qs.demo) {
       case '0':
         thePromise = getData({ taskid: 0 });
         break;
@@ -70,7 +71,18 @@ class App extends Component {
         break;
 
       default:
-        thePromise = getData(qs);
+        if (parseInt(this.state.qs.demo, 10)) {
+          thePromise = getData({ 
+            taskid: 2, 
+            tasktoken: 'car1', 
+            root: _.sample([
+              `${_.sample([5, 6, 7, 8, 10, 11, 12])}`,
+              `${_.sample([5, 6, 7, 8, 10, 11, 12])}.${Math.ceil(Math.random() * 12)}`
+            ]), 
+          });
+        } else {
+          thePromise = getData(this.state.qs);
+        }
         break;
     }
     thePromise.then(challenge => this.setState({
@@ -91,6 +103,7 @@ class App extends Component {
         if (this.state.challenge.images.reduce((acc, image) =>  acc || image.selected, false) === false) {
           return;
         }
+        if (this.state.qs.demo && parseInt(this.state.qs.demo, 10) < 3)
         if(response.success) {
           alert('yes!');
         }
