@@ -58,15 +58,15 @@ class App extends Component {
         break;
 
       case '3':
-        thePromise = getData({ taskid: 1, tasktoken: 'car1' });
+        thePromise = getData({ taskid: 2, tasktoken: 'car1' });
         break;
 
       case '4':
-        thePromise = getData({ taskid: 1, tasktoken: 'car1', root: 7 });
+        thePromise = getData({ taskid: 2, tasktoken: 'car1', root: 7 });
         break;
 
       case '5':
-        thePromise = getData({ taskid: 1, tasktoken: 'car1', root: '7.11' });
+        thePromise = getData({ taskid: 2, tasktoken: 'car1', root: '7.11' });
         break;
 
       default:
@@ -100,7 +100,6 @@ class App extends Component {
       })
       .then(() => this.clear())
       .then(() => this.refresh());
-    
   }
 
   clear() {
