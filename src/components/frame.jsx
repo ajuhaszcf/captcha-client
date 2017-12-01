@@ -7,7 +7,15 @@ import CTA from './cta';
 
 class Frame extends Component {
   render() {
-    const text = this.props.challenge.images[this.props.set].reduce((acc, image) =>  acc || image.selected, false) ? 'Verify' : 'Skip';
+    let text = 'Skip';
+    if (this.props.challenge.images[this.props.set].reduce((acc, image) =>  acc || image.selected, false)) {
+      if (this.props.set < this.props.totalSet - 1) {
+        text = 'Next';
+      }
+      else {
+        text = 'Verify';
+      }
+    }
     return (
       <div>
         <div className="cf-frame">

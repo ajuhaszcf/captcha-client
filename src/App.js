@@ -80,6 +80,12 @@ class App extends Component {
   }
 
   verify() {
+    if (this.state.set < this.state.challenge.images.length - 1) {
+      this.setState({
+        set: this.state.set + 1,
+      });
+      return;
+    }
     sendData(this.state.challenge)
       .then((response) => {
         if (this.state.challenge.images.reduce((acc, image) =>  acc || image.selected, false) === false) {
@@ -107,7 +113,7 @@ class App extends Component {
   render() {
     return (
       <div className="cf-captcha">
-        {this.state.challenge ? <Frame challenge={this.state.challenge} toggle={this.toggleSelection} refresh={this.refresh} verify={this.verify} set={this.state.set} /> : null}
+        {this.state.challenge ? <Frame challenge={this.state.challenge} toggle={this.toggleSelection} refresh={this.refresh} verify={this.verify} set={this.state.set} totalSet={this.state.challenge.images.length} /> : null}
       </div>
     );
   }
