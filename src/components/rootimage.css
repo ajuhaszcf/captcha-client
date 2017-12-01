@@ -9,7 +9,6 @@
 }
 
 .root-image {
-  /* animation: goaway; */
   animation-delay: 2s;
   animation-fill-mode: forwards; 
 }
@@ -19,13 +18,8 @@
   height: 100%;
   overflow: hidden;
   z-index: 0;
-  /* transition: transform .5s ease-in 0.5s;  */
+
   transform-origin: top left;
   animation-duration: 2s;
   animation-fill-mode: forwards; 
-}
-
-@keyframes goaway {
-  0% {  } 
-  100% { visibility: hidden; }
 }

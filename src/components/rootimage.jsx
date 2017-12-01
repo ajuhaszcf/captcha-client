@@ -8,8 +8,9 @@ class RootImage extends Component {
     if (this.props.challenge.scale === 1) return null;
     let styleSheet = document.styleSheets[0];
 
-    let animationName = `animation-zoom-${Math.floor(Math.random()*10000)}`;
-    
+    const uniqueId = `${this.props.challenge.translate.x}-${this.props.challenge.translate.y}-${this.props.challenge.scale}`;
+    console.log(uniqueId);
+    let animationName = `animation-zoom-${uniqueId}`;
     let keyframes =
     `@keyframes ${animationName} {
         0% { opacity: 1; transform: scale(1); } 
@@ -18,9 +19,9 @@ class RootImage extends Component {
         100% { display: none; opacity: 0; transform: scale(${this.props.challenge.scale}) translate(${this.props.challenge.translate.x / 64.0 * -400}px,${this.props.challenge.translate.y / 64.0 * -400}px); }
     }`;
 
-    let parentAnimationName = `parent-animation-zoom-${Math.floor(Math.random()*10000)}`
+    let parentAnimationName = `parent-animation-zoom-${uniqueId}`
     let parentKeyframes =
-    `@keyframes goaway {
+    `@keyframes ${parentAnimationName} {
       0% { visibility: visible; display: initial; } 
       100% { visibility: hidden; display: none; }
     }`;
