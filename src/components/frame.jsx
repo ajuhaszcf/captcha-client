@@ -4,6 +4,8 @@ import './frame.css';
 import Header from './header';
 import Content from './content';
 import CTA from './cta';
+import RootImage from './rootimage';
+
 
 class Frame extends Component {
   render() {
@@ -16,10 +18,12 @@ class Frame extends Component {
         text = 'Verify';
       }
     }
+   
     return (
       <div>
         <div className="cf-frame">
           <Header task={this.props.challenge.task} />
+          <RootImage challenge={this.props.challenge} />
           <Content challenge={this.props.challenge} toggle={this.props.toggle} set={this.props.set} />
           <CTA text={text} verify={this.props.verify} refresh={this.props.refresh} />
         </div>
