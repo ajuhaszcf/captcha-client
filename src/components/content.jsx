@@ -5,11 +5,10 @@ import ChallengeButton from './challenge/button';
 
 class ContentFrame extends Component {
   render() {
-    const gridSize = 4;
-    const buttons = [];
-    for(let i = 0; i < gridSize * gridSize; i += 1) {
-      buttons.push(<ChallengeButton gridSize={gridSize} />);
-    }
+    const gridSize = Math.sqrt(this.props.challenge.images.length);
+    const buttons = this.props.challenge.images.map((image, i) => 
+      <ChallengeButton key={i} gridSize={gridSize} image={image} toggle={this.props.toggle} />
+    );
     return (
       <div className="cf-content">
         {buttons}

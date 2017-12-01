@@ -7,8 +7,8 @@ class CTA extends Component {
   render() {
     return (
       <div className="cf-cta">
-        <SecondaryButtons />
-        <PrimaryButton />
+        <SecondaryButtons refresh={this.props.refresh} />
+        <PrimaryButton text={this.props.text} action={this.props.verify} />
       </div>
     );
   }

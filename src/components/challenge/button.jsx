@@ -3,13 +3,24 @@ import './button.css';
 
 class ChallengeButton extends Component {
   render() {
-    const style = {
+    const overlayStyle = {
       width: 400 / this.props.gridSize,
       height: 400 / this.props.gridSize,
+    };
+    const style = {
+      width: '100%',
+      height: '100%',
+      backgroundImage: `url(/${encodeURIComponent(this.props.image.src)})`,
+    }
+    if (this.props.image.selected) {
+      style.opacity = 0.2;
+      overlayStyle.backgroundColor = 'rgba(90, 197, 151, 0.8)';
     }
     return (
-      <button className="cf-challenge-button" style={style}>
-      </button>
+      <div className={`cf-challenge-button-overlay ${this.props.image.selected && 'check-overlay'}`} style={overlayStyle} >
+        <button className="cf-challenge-button" style={style} onClick={() => this.props.toggle(this.props.image.id)}>
+        </button>
+      </div>
     );
   }
 }

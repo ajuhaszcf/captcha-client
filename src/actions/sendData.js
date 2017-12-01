@@ -1,5 +1,5 @@
 export default function sendData(data) {
-  return fetch('http://localhost:3001/captcha/attempt', {
+  return fetch(`/captcha/attempt`, {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {

@@ -18,10 +18,10 @@
   background-position: center;
 }
 
-#help {
+#reload {
   background-image: url(https://www.gstatic.com/recaptcha/api2/refresh_black.png);
 }
 
-#reload {
+#help {
   background-image: url(https://www.gstatic.com/recaptcha/api2/info_black.png);
 }

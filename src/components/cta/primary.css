@@ -4,10 +4,11 @@
 }
 
 .cf-captcha-primary-button {
-  background: #4a90e2;
+  color: #FFF;
+  background-color: #4981DF;
+  border-color: #4981DF;
   border: 0;
-  border-radius: 2px;
-  color: #fff;
+  border-radius: 4px;
   cursor: pointer;
   font-family: Roboto,helvetica,arial,sans-serif;
   font-size: 14px;

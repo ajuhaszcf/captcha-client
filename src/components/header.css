@@ -1,5 +1,5 @@
 .cf-header {
-  background-color: #4a90e2;
+  background-color: #4981df;
   position: relative;
   padding: 24px;
   color: white;
@@ -7,4 +7,12 @@
   width: 100%;
   font-size: 16px;
   box-sizing: border-box;
+}
+
+.cf-header-instruction {
+  font-size: 14px;
+}
+
+.cf-header strong {
+  font-size: 28px;
 }

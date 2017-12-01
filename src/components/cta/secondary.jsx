@@ -6,7 +6,7 @@ class SecondaryButtons extends Component {
     return (
       <div className="cf-secondary">
         <div className="button-list">
-          <button className="cf-captcha-button" id="reload"></button>
+          <button className="cf-captcha-button" id="reload" onClick={this.props.refresh} ></button>
           <button className="cf-captcha-button" id="help"></button>
         </div>
       </div>
